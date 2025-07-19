@@ -23,7 +23,7 @@ class vect2
 			return *this;
 		};
 
-		int operator[](int i)
+		int &operator[](int i)
 		{
 			return (i == 0) ? x : y;
 		};
@@ -60,6 +60,119 @@ class vect2
 			return tmp;
 		}
 
+		vect2 &operator+=(const vect2 &obj1)
+		{
+			this->x += obj1.x;
+			this->y += obj1.y;
+			return (*this);
+		}
+
+		vect2 &operator-=(const vect2 &obj1)
+		{
+			this->x -= obj1.x;
+			this->y -= obj1.y;
+			return (*this);
+		}
+		// vect2 &operator*=(const vect2 &obj1)
+		// {
+		// 	this->x *= obj1.x;
+		// 	this->y *= obj1.y;
+		// 	return (*this);
+		// }
+		// vect2 &operator+=(int i)
+		// {
+		// 	this->x += i;
+		// 	this->y += i;
+		// 	return (*this);
+		// }
+
+		// vect2 &operator-=(int i)
+		// {
+		// 	this->x -= i;
+		// 	this->y -= i;
+		// 	return (*this);
+		// }
+		vect2 &operator*=(int i)
+		{
+			this->x *= i;
+			this->y *= i;
+			return (*this);
+		}
+
+		vect2 operator+(const vect2 &obj) const
+		{
+			vect2 res;
+
+			res.x = this->x + obj.x;
+			res.y = this->y + obj.y;
+			return res;
+		}
+		vect2 operator*(const vect2 &obj) const
+		{
+			vect2 res;
+
+			res.x = this->x * obj.x;
+			res.y = this->y * obj.y;
+			return res;
+		}
+		vect2 operator-(const vect2 &obj) const
+		{
+			vect2 res;
+
+			res.x = this->x - obj.x;
+			res.y = this->y - obj.y;
+			return res;
+		}
+
+		// vect2 operator*(int i)
+		// {
+		// 	vect2 res;
+
+		// 	res.x = this->x * i;
+		// 	res.y = this->y * i;
+		// 	return res;
+		// }
+		vect2 operator+(int i)
+		{
+			vect2 res;
+
+			res.x = this->x + i;
+			res.y = this->y + i;
+			return res;
+		}
+		// vect2 operator-(int i)
+		// {
+		// 	vect2 res;
+
+		// 	res.x = this->x - i;
+		// 	res.y = this->y - i;
+		// 	return res;
+		// }
+		
+		vect2 operator-() const {
+			return vect2(-x, -y);
+		}
+		
+		bool operator==(const vect2 &obj)
+		{
+			return (this == &obj);
+		}
+		bool operator!=(const vect2 &obj)
+		{
+			return (this != &obj);
+		}
+		friend vect2 operator*(int i, vect2 &obj)
+		{
+			vect2 res;
+	
+			res.x = obj.x * i;
+			res.y = obj.y * i;
+			return res;
+		}
+		friend vect2 operator+(int i, vect2 &obj)
+		{	
+			return obj + i;
+		}
 	};
 	
 std::ostream &operator<<(std::ostream &out, const vect2 &obj)
