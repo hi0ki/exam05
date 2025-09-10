@@ -28,15 +28,15 @@ int main(int ac, char **av)
 
     while (read(0, &cmd, 1) > 0)
     {
-        if (cmd == 'a' &&  x > 0)
+        if (cmd == 'a' &&  x > 1)
             x--;
-        else if (cmd == 'w' &&  y > 0)
+        else if (cmd == 'w' &&  y > 1)
             y--;
         else if (cmd == 's' &&  y < height)
             y++;
         else if (cmd == 'd' &&  x < width)
             x++;
-        if (cmd == 'x')
+        else if (cmd == 'x')
             pen = !pen;
         if (pen)
             arr[0][x][y] = 1;
@@ -70,7 +70,7 @@ int main(int ac, char **av)
                 }
                 else
                 {
-                    if (nb == 2)
+                    if (nb == 3)
                     {
                         arr[(iter + 1) % 2][w][h] = 1;
                     }
